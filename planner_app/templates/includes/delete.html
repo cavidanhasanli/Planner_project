@@ -1,0 +1,29 @@
+
+
+
+<button id="remove" data_url="{% url 'task_delete' task_data.id %}"  type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span> Yes
+</button>
+<button type="button" class="btn btn-default" data-dismiss="modal"><span
+        class="glyphicon glyphicon-remove"></span> No
+</button>
+
+<script>
+$('#remove').click(function () {
+    var data_url = $(this).attr('data_url');
+
+    $.ajax({
+        url: data_url,
+        method: "DELETE",
+        success: function (data) {
+            console.log(data)
+            location.reload()
+
+
+        },
+
+        error: function (xhr, err, msg) {
+            console.log(xhr, err, msg);
+        }
+    });
+});
+</script>
